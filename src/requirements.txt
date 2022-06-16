@@ -1,0 +1,12 @@
+create controller done
+get controller -- done
+
+update contoller  
+
+delete controller 
+
+user schema creation
+user authentication
+
+middleware
+
