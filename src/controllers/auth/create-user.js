@@ -6,11 +6,12 @@ const User = require('../../models/schemas/user.schema');
 const createUser = async (req,res)=>{
     try {
         // name, email, password
-        const {name, email, password} = req.body;
+        const {name, email, password, role} = req.body;
+        console.log(name,email,role)
         // create password 
         const hashPassword = await bcrypt.hash(password,5);
 
-        const user = await User.create({name, email, password: hashPassword });
+        const user = await User.create({name, email,role,  password: hashPassword });
         return res.status(201).send(user);
     } catch (error) {
         console.log("error occured in creating user ",error);

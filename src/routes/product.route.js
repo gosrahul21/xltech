@@ -2,13 +2,16 @@ const express = require('express');
 const { body, validationResult } = require("express-validator");
 
 
+
 const createProduct = require('../controllers/products/create-product.controller');
 const deleteProductById = require('../controllers/products/delete-product.controller');
-const {getProductById} = require('../controllers/products/get-product.controller');
+const {getProductById, getProducts} = require('../controllers/products/get-product.controller');
 const updateProductById = require('../controllers/products/update-product.controller');
 
 const route = express.Router();
 
+// get product with pagination
+route.get('/', getProducts);
 route.get('/:productId', getProductById);
 
 route.post('/', 

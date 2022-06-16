@@ -15,4 +15,23 @@ const getProductById = async (req,res)=>{
 }
 
 
-module.exports = {getProductById};
+const getProducts = async (req,res) => {
+    try {
+        const {limit, page} = req.query;
+        const skippedProducts = limit*(page-1);
+        const  products = await Product.find({})
+        .skip(skippedProducts)
+        .limit(limit);
+
+        const productCount = await Product.find({}).count();
+
+        return res.send({products, productCount });
+    } catch (error) {
+        return res.status(500).send({
+            error: error.message
+        })
+    }
+}
+
+
+module.exports = {getProductById, getProducts };
