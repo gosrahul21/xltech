@@ -9,7 +9,7 @@ route.post('/signup', createUser);
 // login 
 route.post('/login',loginUser);
 
-router.get('/token',auth, )
+// router.get('/token',auth, )
 
 
 module.exports = route;
